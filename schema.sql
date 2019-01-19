@@ -1,15 +1,18 @@
-/*
-
-To run this file, we do the following in our Terminal:
-
-1. Go to the directory of this sql file.
-
-2. Get into our mysql console.
-
-3. Run "source schema.sql"
-
-*/
-
+DROP DATABASE IF EXISTS store;
+CREATE DATABASE store;
+USE store; 
+        CREATE TABLE merchant3 (
+        id INT NOT NULL AUTO_INCREMENT,
+        merchant_Id INT NULL,
+        product_name VARCHAR(45) NULL,
+        department_name VARCHAR(45) NULL,
+        price DECIMAL(10, 2) NULL,
+        stock_quantity INT NOT NULL,
+        PRIMARY KEY (id),
+        product_desc VARCHAR(100),
+        photolink VARCHAR(200),
+        storeid INT NULL
+      );
 
 USE store;
 INSERT INTO merchant3 (merchant_Id, product_name, department_name, price, stock_quantity,product_desc,photolink,storeid)
