@@ -11,8 +11,10 @@ var fs = require("fs");
 const port = process.env.PORT || 8020
 
 
-app.use(express.static('public')); // this wont work
+//app.use(express.static('public')); // this wont work
 app.use(express.static('views'));
+
+app.use('/views', express.static(__dirname + '/views'));
 
 
 
@@ -29,10 +31,10 @@ var mysql = require("mysql");
 
 var connection = mysql.createConnection({
 
-    host: "aa1jzhhmamar4by.ch3xjofnzimh.us-east-1.rds.amazonaws.com",
+    host: "localhost",
     port: 3306,
-    user: "ctw",
-    password: "password",
+    user: "root",
+    password: "clarks77",
     database: "store"
 
 });
@@ -46,30 +48,75 @@ connection.connect(function (err) {
 });
 
 
-// // app.get("/", function(req, res) {
-// //     res.sendFile(path.join(__dirname, "main.handlears"));
-// //   });
-
-
 
 
 app.get("/", function (req, res) {
     // console.log("something")
     // res.send("hi")
-    connection.query("SELECT * FROM merchant3;", function (err, data) {
+    connection.query("SELECT * FROM merchant3;", function (err, data1) {
+        connection.query("SELECT * FROM cart;", function (err, data2) {
         if (err) {
             console.log(err);
             return res.status(500).end();
         }
 
+      
+        var total = 0;
+        var totalStock = 0;
+        var final = []
         
 
-        res.render("index", {
-            merchant3: data
+        for(var i of data2) {
+            total += i.stock_quantity * i.price
+            totalStock += i.stock_quantity
+        }
+
+        // data2.push({total: total})
+        final.push({total: total, stockT: totalStock})
+        // console.log(final[0].stockT)
+
+        res.render("index",  {
+            merchant3: data1,
+            cart: data2,
+            totals: final
         });
     });
+});
 
-    // res.render("index");
+});
+
+app.get("/cartData", function (req, res) {
+    // console.log("something")
+    // res.send("hi")
+    connection.query("SELECT * FROM cart;", function (err, data) {
+        
+        if (err) {
+            console.log(err);
+            return res.status(500).end();
+        }
+
+      
+        var total = 0;
+        var totalStock = 0;
+        var final = [];
+        var indTotal = []; 
+     
+
+        for(var i of data) {
+            total += i.stock_quantity * i.price // price total of all items
+            totalStock += i.stock_quantity // stock total of all items
+            indTotal.push(i.stock_quantity * i.price)
+        }
+
+        // data2.push({total: total})
+        final.push({total: total, stockT: totalStock, itemT: indTotal})
+        
+
+        res.json({
+            cart: data,
+            totals: final
+        });
+    });
 
 });
 
@@ -96,66 +143,171 @@ app.get("/:searched", function (req, res) {
 
 });
 
-// app.get("/new/:searched", function (req, res) {
-
-    
-//     connection.query("SELECT * FROM merchant3 WHERE product_name = ?", [req.params.searched], function (err, data) {
-//         if (err) {
-//             console.log(err);
-//             return res.status(500).end();
-//         }
-
-//         //var hbsObj = {items: data}
 
 
-//         console.log(data),
-//         console.log("this one " + req.params.searched)
+app.get("/purchase/cart", function (req, res) {
+    connection.query("SELECT * FROM cart;", function (err, data) {
+        if (err) {
+            console.log(err);
+            return res.status(500).end();
+        }
 
-//         //res.render("item", {
-//           //  items: data
-//         //});
+      
+        var total = 0;
+        var totalStock = 0;
+        var final = [];
+        var indTotal = []; 
+     
 
-//         res.render("item", {
-//             items: data
-//         });
-//     });
+        for(var i of data) {
+            console.log(i)
+            total += i.stock_quantity * i.price // price total of all items
+            totalStock += i.stock_quantity // stock total of all items
+            i['itemT'] = i.stock_quantity * i.price;
+        }
 
-// });
+     
+        final.push({total: total, stockT: totalStock})
+        console.log(data)
+        res.render("cart",  {
+            cart: data,
+            totals: final
+        });
+    });
+});
 
-// app.get("/api/cart", function(req, res) {
-//     res.json(cartData);
-//   });
-
-app.get("/cart", function (req, res) {
-
-    res.render("cart")
+app.get("/purchase/products", function (req, res) {
+    connection.query("SELECT * FROM merchant3;", 
+    function (err, data) {
+      if (err) {
+          console.log(err);
+          return res.status(500).end();
+      }
+   
+      res.render("product", {
+          items: data
+      });
+  });
     
 });
 
-// app.post("/api/cart/:id", function(req, res) {
-//     console.log(req.params.id)
-//     connection.query("SELECT * FROM merchant3 WHERE id = ?", [req.params.id], function (err, data) {
-        
-//         if (err) {
-//             console.log(err);
-//             return res.status(500).end();
-//         }
-        
-//         console.log(data[0])
-        
-//         cartData.push(data[0])
 
-//     });
-  
-// });
+app.post("/add/cart", function(req, res) {
+    console.log(req.body.name, req.body.stock)
 
-// app.put("/api/delete/cart/:item", function(req, res) {
-//     console.log(req.params.item)
-//     var itemIndex = req.params.item;
-//     cartData.splice(itemIndex,1)
-  
-// });
+    connection.query("SELECT * FROM cart WHERE product_name=(?);", [req.body.name], function (err, data) {
+        if (err) {
+            console.log(err);
+            return res.status(500).end();
+        }
 
+        console.log(data)
+        //If data is = 0 that means the item that just came in doesnt exist in the cart table, if it does, we adjust the stock.
+        if(data.length <= 0) {
+            connection.query("INSERT INTO cart (product_name, price, stock_quantity,photolink) VALUES (?, ?, ?, ?) ", [req.body.name, req.body.price, req.body.stock, req.body.photo ], function (err, data) {
+        
+                if (err) {
+                    console.log(err);
+                    console.log(data)
+                    return res.status(500).end();
+                }
+                
+            });
+        }else {
+            connection.query("UPDATE cart SET stock_quantity= stock_quantity + (?) WHERE product_name=(?)", [req.body.stock, req.body.name], function (err, data) {
+        
+                if (err) {
+                    console.log(err);
+                    console.log(data)
+                    return res.status(500).end();
+                }
+                
+            });
+        }
+    });
+});
+
+app.post("/update/cartStock", function(req, res) {
+    console.log(req.body.name, req.body.stock)
+
+    connection.query("SELECT * FROM cart WHERE product_name=(?);", [req.body.name], function (err, data) {
+        if (err) {
+            console.log(err);
+            return res.status(500).end();
+        }
+
+        console.log(data)
+        //If data is = 0 that means the item that just came in doesnt exist in the cart table, if it does, we adjust the stock.
+        if(data.length <= 0) {
+            connection.query("INSERT INTO cart (product_name, price, stock_quantity,photolink) VALUES (?, ?, ?, ?) ", [req.body.name, req.body.price, req.body.stock, req.body.photo ], function (err, data) {
+        
+                if (err) {
+                    console.log(err);
+                    console.log(data)
+                    return res.status(500).end();
+                }
+                
+            });
+        }else {
+            connection.query("UPDATE cart SET stock_quantity= (?) WHERE product_name=(?)", [req.body.stock, req.body.name], function (err, data) {
+        
+                if (err) {
+                    console.log(err);
+                    console.log(data)
+                    return res.status(500).end();
+                }
+                
+                
+            });
+        }
+    });
+});
+
+
+app.put("/delete/cart", function(req, res) {
+    console.log(req.body.name)
+    connection.query("DELETE FROM cart WHERE id = (?)", [req.body.name], function(err, result) {
+        if (err) {
+          // If an error occurred, send a generic server failure
+          return res.status(500).end();
+        }
+        else if (result.affectedRows === 0) {
+          // If no rows were changed, then the ID must not exist, so 404
+          return res.status(404).end();
+        }
+        res.status(200).end();
+    });
+});
+
+app.put("/delete/cartStock", function(req, res) {
+    console.log(req.body.name)
+    connection.query("DELETE FROM cart WHERE id = (?)", [req.body.name], function(err, result) {
+        if (err) {
+          // If an error occurred, send a generic server failure
+          return res.status(500).end();
+        }
+        else if (result.affectedRows === 0) {
+          // If no rows were changed, then the ID must not exist, so 404
+          return res.status(404).end();
+        }
+        res.status(200).end();
+    
+    });
+});
+
+app.get("/purchase/checkout", function (req, res) {
+   
+    // connection.query("UPDATE cart SET stock_quantity= (?) WHERE product_name=(?)", [req.body.stock, req.body.name], function (err, data1) {
+        
+    //         if (err) {
+    //             console.log(err);
+    //             return res.status(500).end();
+    //         }
+            
+    // });
+
+    res.render("checkout");
+});
 
 Handlebars.registerHelper('grouped_each', function(every, context, options) {
     var out = "", subcontext = [], i;
@@ -172,9 +324,7 @@ Handlebars.registerHelper('grouped_each', function(every, context, options) {
     return out;
 });
 
-// app.get('/la', (req, res) => {
-//     res.send("yee")
-// })
+
 
 app.listen(port, function () {
     console.log("Server listening on PORT: " + port)

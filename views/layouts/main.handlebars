@@ -8,46 +8,44 @@
    {{!-- <link rel="stylesheet" type="text/css" href="/css/style.css"> --}}
    
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
+	<link rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/elegant-font/html-css/style.css">
+	<link rel="stylesheet" type="text/css" href="/fonts/elegant-font/html-css/style.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/lightbox2/css/lightbox.min.css">
+	<link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
-<body>
+<body class="animsition">
 	<header class="header1">
 		<!-- Header desktop -->
 		<div class="container-menu-header">
-			<div class="topbar">
+			{{!-- <div class="topbar">
 				<div class="topbar-social">
 					<a href="#" class="topbar-social-item fa fa-facebook"></a>
 					<a href="#" class="topbar-social-item fa fa-instagram"></a>
@@ -57,7 +55,7 @@
 				</div>
 
 				<span class="topbar-child1">
-					Free shipping for standard order over $100
+					Free shipping !!!!!!!! 
 				</span>
 
 				<div class="topbar-child2">
@@ -72,12 +70,12 @@
 						</select>
 					</div>
 				</div>
-			</div>
+			</div> --}}
 
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="/" class="logo">
-					<img src="images/icons/logo.png" alt="IMG-LOGO">
+					<img src="/images/icons/logo.png" alt="IMG-LOGO">
 				</a>
 
 				<!-- Menu -->
@@ -86,36 +84,36 @@
 						<ul class="main_menu">
 							<li>
 								<a href="/">Home</a>
-								<ul class="sub_menu">
+								{{!-- <ul class="sub_menu">
 									<li><a href="index.html">Homepage V1</a></li>
 									<li><a href="home-02.html">Homepage V2</a></li>
 									<li><a href="home-03.html">Homepage V3</a></li>
-								</ul>
+								</ul> --}}
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="/purchase/products">Shop</a>
 							</li>
 
-							<li class="sale-noti">
+							{{!-- <li class="sale-noti">
 								<a href="product.html">Sale</a>
-							</li>
+							</li> --}}
 
-							<li>
+							{{!-- <li>
 								<a href="cart.html">Features</a>
-							</li>
+							</li> --}}
 
 							<li>
-								<a href="/cart">Cart</a>
+								<a href="/purchase/cart">Cart</a>
 							</li>
-
+{{!-- 
 							<li>
 								<a href="about.html">About</a>
 							</li>
 
 							<li>
 								<a href="contact.html">Contact</a>
-							</li>
+							</li> --}}
 						</ul>
 					</nav>
 				</div>
@@ -123,75 +121,30 @@
 				<!-- Header Icon -->
 				<div class="header-icons">
 					<a href="#" class="header-wrapicon1 dis-block">
-						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+						<img src="/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 					</a>
 
 					<span class="linedivide1"></span>
 
 					<div class="header-wrapicon2">
-						<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-						<span class="header-icons-noti">0</span>
+						<img src="/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+						<span class="header-icons-noti">{{totals.0.stockT}}</span>
 
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-01.jpg" alt="IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											White Shirt With Pleat Detail Back
-										</a>
-
-										<span class="header-cart-item-info">
-											1 x $19.00
-										</span>
-									</div>
-								</li>
-
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-02.jpg" alt="IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											Converse All Star Hi Black Canvas
-										</a>
-
-										<span class="header-cart-item-info">
-											1 x $39.00
-										</span>
-									</div>
-								</li>
-
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-03.jpg" alt="IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											Nixon Porter Leather Watch In Tan
-										</a>
-
-										<span class="header-cart-item-info">
-											1 x $17.00
-										</span>
-									</div>
-								</li>
+								
 							</ul>
 
-							<div class="header-cart-total">
-								Total: $75.00
-							</div>
+							<div class="header-cart-total" >
+								Total: $<span class="total"></span>
+							</div> 
+
 
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="/cart" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="/purchase/cart" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
@@ -212,91 +165,45 @@
 		<!-- Header Mobile -->
 		<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
-			<a href="index.html" class="logo-mobile">
-				<img src="images/icons/logo.png" alt="IMG-LOGO">
+			<a href="/" class="logo-mobile">
+				<img src="/images/icons/logo.png" alt="IMG-LOGO">
 			</a>
 
-			<!-- Button show menu -->
+			<!-- Button show menu Drop Down Cart -->
 			<div class="btn-show-menu">
 				<!-- Header Icon mobile -->
 				<div class="header-icons-mobile">
-					<a href="#" class="header-wrapicon1 dis-block">
-						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					<a href="/" class="header-wrapicon1 dis-block">
+						<img src="/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 					</a>
 
 					<span class="linedivide2"></span>
 
 					<div class="header-wrapicon2">
-						<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-						<span class="header-icons-noti">0</span>
+						<img src="/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+						<span class="header-icons-noti">{{totalss.0.stockT}}</span>
 
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-01.jpg" alt="IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											White Shirt With Pleat Detail Back
-										</a>
-
-										<span class="header-cart-item-info">
-											1 x $19.00
-										</span>
-									</div>
-								</li>
-
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-02.jpg" alt="IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											Converse All Star Hi Black Canvas
-										</a>
-
-										<span class="header-cart-item-info">
-											1 x $39.00
-										</span>
-									</div>
-								</li>
-
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-03.jpg" alt="IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											Nixon Porter Leather Watch In Tan
-										</a>
-
-										<span class="header-cart-item-info">
-											1 x $17.00
-										</span>
-									</div>
-								</li>
+							 
 							</ul>
 
 							<div class="header-cart-total">
-								Total: $75.00
+								Total: $<span class="total"></span>
 							</div>
 
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="/cart" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="/purchase/cart" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
 
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="/purchase/cart" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										Check Out
 									</a>
 								</div>
@@ -349,38 +256,21 @@
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="index.html">Home</a>
+						<a href="/">Home</a>
 						<ul class="sub-menu">
-							<li><a href="index.html">Homepage V1</a></li>
-							<li><a href="home-02.html">Homepage V2</a></li>
-							<li><a href="home-03.html">Homepage V3</a></li>
+							<li><a href="/">Homepage</a></li>
 						</ul>
 						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="product.html">Shop</a>
+						<a href="/purchase/products">Shop</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="product.html">Sale</a>
+						<a href="/purchase/cart">Cart</a>
 					</li>
 
-					<li class="item-menu-mobile">
-						<a href="cart.html">Features</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="blog.html">Blog</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="about.html">About</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="contact.html">Contact</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
@@ -529,23 +419,23 @@
 
 		<div class="t-center p-l-15 p-r-15">
 			<a href="#">
-				<img class="h-size2" src="images/icons/paypal.png" alt="IMG-PAYPAL">
+				<img class="h-size2" src="/images/icons/paypal.png" alt="IMG-PAYPAL">
 			</a>
 
 			<a href="#">
-				<img class="h-size2" src="images/icons/visa.png" alt="IMG-VISA">
+				<img class="h-size2" src="/images/icons/visa.png" alt="IMG-VISA">
 			</a>
 
 			<a href="#">
-				<img class="h-size2" src="images/icons/mastercard.png" alt="IMG-MASTERCARD">
+				<img class="h-size2" src="/images/icons/mastercard.png" alt="IMG-MASTERCARD">
 			</a>
 
 			<a href="#">
-				<img class="h-size2" src="images/icons/express.png" alt="IMG-EXPRESS">
+				<img class="h-size2" src="/images/icons/express.png" alt="IMG-EXPRESS">
 			</a>
 
 			<a href="#">
-				<img class="h-size2" src="images/icons/discover.png" alt="IMG-DISCOVER">
+				<img class="h-size2" src="/images/icons/discover.png" alt="IMG-DISCOVER">
 			</a>
 
 			<div class="t-center s-text8 p-t-20">
@@ -553,6 +443,33 @@
 			</div>
 		</div>
 	</footer>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
+	<script type="text/javascript">
+		$(".selection-1").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+
+	<script type="text/javascript" src="/vendor/slick/slick.min.js"></script>
+	<script type="text/javascript" src="/js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="/vendor/lightbox2/js/lightbox.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="/vendor/sweetalert/sweetalert.min.js"></script>
 
 
 
@@ -565,6 +482,206 @@
 
 	<!-- Container Selection -->
 	<div id="dropDownSelect1"></div>
-	<div id="dropDownSelect2"></div>
+	<div id="dropDownSelect2"></div> 
 </body>
 </html>
+
+
+<script>
+
+	$(document).ready(function() {
+    
+	$('.header-cart-wrapitem').empty() // Items in Cart visible on modal for nav
+	$('.total').empty() // Price Total
+	$('.header-icons-noti').empty() //Stock Total
+    
+	
+    $.ajax({
+        method: "GET",
+        url: "/cartData"
+    }).then(function(response) {
+      
+
+	for(var i of response.cart) {
+            $('.header-cart-wrapitem').append(
+                `<li class="header-cart-item" data-item="${i.product_name}"><a href="/${i.product_name}"><div class="delMeModalCart header-cart-item-img"><img src="/images/${i.photolink}" alt="IMG"></div></a><div class="header-cart-item-txt"><a href="/${i.product_name}" class="header-cart-item-name">${i.product_name}</a><span class="header-cart-item-info">${i.stock_quantity} x $${i.price}</span></div></li>`)
+        }
+	
+		$('.total').append(response.totals[0].total)
+		$('.header-icons-noti').append(response.totals[0].stockT)
+
+    });
+	
+});
+
+$(".delMeCart").on('click', function() {
+
+	var delItem = { 
+        name: $(this).parent().data('item')
+    }
+
+   console.log(delItem)
+
+	
+	$(this).parent().parent().remove() 
+
+    $.ajax({
+        method: "PUT",
+        url: '/delete/cart',
+		data: delItem
+    }).then(function(data) {
+       
+		console.log("browser: " + data)
+    });
+
+});
+
+
+	$(".js-show-header-dropdown, .delMeCart").click(function() {
+    event.preventDefault();
+	$('.header-cart-wrapitem').empty() // Items in Cart visible on modal for nav
+	$('.total').empty() // Price Total
+	$('.header-icons-noti').empty() //Stock Total
+	$('.totalCart').empty()
+    
+	
+    $.ajax({
+        method: "GET",
+        url: "/cartData"
+    }).then(function(response) {
+      
+
+	for(var i of response.cart) {
+            $('.header-cart-wrapitem').append(
+                `<li class="header-cart-item" data-item="${i.product_name}"><a href="/${i.product_name}"><div class="delMeModalCart header-cart-item-img"><img src="/images/${i.photolink}" alt="IMG"></div></a><div class="header-cart-item-txt"><a href="/${i.product_name}" class="header-cart-item-name">${i.product_name}</a><span class="header-cart-item-info">${i.stock_quantity} x $${i.price}</span></div></li>`)
+        }
+	
+		$('.total').append(response.totals[0].total)
+		$('.header-icons-noti').append(response.totals[0].stockT)
+		$('.totalCart').append("$" + response.totals[0].total)
+    });
+	
+});
+</script>
+
+<!--===============================================================================================-->
+
+
+	<script type="text/javascript">
+		$('.cartMess').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+
+		
+
+var queryURL = "https://api.instagram.com/v1/users/self/media/recent/?access_token=4190265650.8e42370.d29738232a5e4a5baa08650bde56fb93";
+        
+
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(function(response) {
+          console.log(response)
+          var instaData = response.data;
+          var insta = [];
+          
+          for(var i=0; i < 5; i++) {
+           
+              $('.insta').append(`
+<div class="block4 wrap-pic-w">
+      <img src="${response.data[i].images.standard_resolution.url}" style="height:25em" alt="IMG-INSTAGRAM">
+
+				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+						<span class="p-t-2">${response.data[i].likes.count}</span>
+					</span>
+
+					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+						<p class="s-text10 m-b-15 h-size1 of-hidden">
+							${response.data[i].caption.text}
+						</p>
+
+						<span class="s-text9">
+							Photo by @cw
+						</span>
+					</div>
+				</a>
+        </div>
+        `)
+          }
+        
+        });
+
+$(".addDB").on('click', function(e) {
+    event.preventDefault(e);
+	var cartData = {
+		name: $(this).parent().data('name'),
+		price: $(this).parent().data('price'),
+		stock: 1,
+		photo: $(this).parent().data('photo')
+	}
+
+    $.ajax({
+        type: "POST",
+        url: "/add/cart",
+		data: cartData
+    }).then(function(data) {
+       
+    });
+});
+
+//Add + 1 to modal cart icon after adding to Cart
+
+$(".addCart").on('click', function(e) {
+    event.preventDefault(e);
+	
+	$('.header-icons-noti').empty() //Stock Total	
+    $.ajax({
+        method: "GET",
+        url: "/cartData"
+    }).then(function(response) {
+       
+		$('.header-icons-noti').append(response.totals[0].stockT + 1)
+
+    });
+
+});
+
+
+//Delete Item Row From Modal Cart View  ---- NOT WORKING
+
+$(".delMeModalCart").on('click', function() {
+
+	console.log('clicked')
+	var delItem = { 
+        name: $(this).parent().eq(this).data('item')
+    }
+
+   console.log(delItem)
+
+	
+	$(this).parent().eq(this).remove() 
+
+    $.ajax({
+        method: "PUT",
+        url: '/delete/cart',
+		data: delItem
+    }).then(function(data) {
+       
+		console.log("browser: " + data)
+    });
+
+});
+
+
+
+
+
+	</script>
+
+<!--===============================================================================================-->
+	<script src="/js/main.js"></script>

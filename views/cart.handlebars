@@ -1,4 +1,7 @@
-<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/heading-pages-01.jpg);">
+
+<body class="animsition">
+
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(https://images.pexels.com/photos/210588/pexels-photo-210588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);">
 		<h2 class="l-text2 t-center">
 			Cart
 		</h2>
@@ -18,59 +21,38 @@
 							<th class="column-4 p-l-70">Quantity</th>
 							<th class="column-5">Total</th>
 						</tr>
-
-						<tr class="table-row">
-							<td class="column-1">
-								<div class="cart-img-product b-rad-4 o-f-hidden">
-									<img src="images/item-10.jpg" alt="IMG-PRODUCT">
+				{{#each cart}}
+						<tr class="table-row currItem">
+							<td class="column-1" data-item="{{id}}">
+								<div class="delMeCart cart-img-product b-rad-4 o-f-hidden">
+									<img src="/images/{{photolink}}" alt="IMG-PRODUCT">
 								</div>
 							</td>
-							<td class="column-2">Men Tshirt</td>
-							<td class="column-3">$36.00</td>
+							<td class="column-2">{{product_name}}</td>
+							<td class="column-3">${{price}}</td>
 							<td class="column-4">
-								<div class="flex-w bo5 of-hidden w-size17">
+								<div data-name="{{product_name}}" class="flex-w bo5 of-hidden w-size17">
 									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
 										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
 									</button>
 
-									<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="1">
+									<input class="stockVal size8 m-text18 t-center num-product" type="number" name="num-product1" value="{{stock_quantity}}">
 
 									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
 										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
 									</button>
 								</div>
 							</td>
-							<td class="column-5">$36.00</td>
+							
+							<td class="column-5">${{itemT}}</td>
 						</tr>
-
-						<tr class="table-row">
-							<td class="column-1">
-								<div class="cart-img-product b-rad-4 o-f-hidden">
-									<img src="images/item-05.jpg" alt="IMG-PRODUCT">
-								</div>
-							</td>
-							<td class="column-2">Mug Adventure</td>
-							<td class="column-3">$16.00</td>
-							<td class="column-4">
-								<div class="flex-w bo5 of-hidden w-size17">
-									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-									</button>
-
-									<input class="size8 m-text18 t-center num-product" type="number" name="num-product2" value="1">
-
-									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-									</button>
-								</div>
-							</td>
-							<td class="column-5">$16.00</td>
-						</tr>
+				{{/each}}
+						
 					</table>
 				</div>
 			</div>
 
-			<div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+			{{!-- <div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
 				<div class="flex-w flex-m w-full-sm">
 					<div class="size11 bo4 m-r-10">
 						<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="coupon-code" placeholder="Coupon Code">
@@ -90,49 +72,37 @@
 						Update Cart
 					</button>
 				</div>
-			</div>
+			</div> --}}
 
 			<!-- Total -->
 			<div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
 				<h5 class="m-text20 p-b-24">
-					Cart Totals
+					Cart Totals 
 				</h5>
 
 				<!--  -->
 				<div class="flex-w flex-sb-m p-b-12">
 					<span class="s-text18 w-size19 w-full-sm">
-						Subtotal:
+						Subtotal: 
 					</span>
 
 					<span class="m-text21 w-size20 w-full-sm">
-						$39.00
+						<span class="totalCart"></span>
 					</span>
 				</div>
 
 				<!--  -->
 				<div class="flex-w flex-sb bo10 p-t-15 p-b-20">
 					<span class="s-text18 w-size19 w-full-sm">
-						Shipping:
+						Tax: Tax Free Day
 					</span>
 
-					<div class="w-size20 w-full-sm">
+					{{!-- <div class="w-size20 w-full-sm">
 						<p class="s-text8 p-b-23">
 							There are no shipping methods available. Please double check your address, or contact us if you need any help.
 						</p>
 
-						<span class="s-text19">
-							Calculate Shipping
-						</span>
-
-						<div class="rs2-select2 rs3-select2 rs4-select2 bo4 of-hidden w-size21 m-t-8 m-b-12">
-							<select class="selection-2" name="country">
-								<option>Select a country...</option>
-								<option>US</option>
-								<option>UK</option>
-								<option>Japan</option>
-							</select>
-						</div>
-
+			
 						<div class="size13 bo4 m-b-12">
 						<input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="state" placeholder="State /  country">
 						</div>
@@ -147,7 +117,7 @@
 								Update Totals
 							</button>
 						</div>
-					</div>
+					</div> --}}
 				</div>
 
 				<!--  -->
@@ -156,17 +126,99 @@
 						Total:
 					</span>
 
-					<span class="m-text21 w-size20 w-full-sm">
-						$39.00
+					<span class="total-cart m-text21 w-size20 w-full-sm">
+						<span class="totalCart"></span>
 					</span>
 				</div>
 
 				<div class="size15 trans-0-4">
 					<!-- Button -->
-					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+				<button id="checkout" type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
 						Proceed to Checkout
 					</button>
 				</div>
 			</div>
 		</div>
 	</section>
+
+	</body>
+
+
+    <script>
+	$(document).ready(function() {
+    	
+    $.ajax({
+        method: "GET",
+        url: "/cartData"
+    }).then(function(response) {
+   
+		$('.totalCart').append("$" + response.totals[0].total)
+
+    });
+	
+});
+
+  
+function updateStock(newCart) {
+    
+    $.ajax({
+        type: "POST",
+        url: "/update/cartStock",
+		data: newCart
+    }).then(function(data) {
+       
+    });
+};
+
+
+$("#checkout").on('click', function() {
+	console.log('fired')
+    $.ajax({
+		 url: "/purchase/checkout",
+        method: "GET"
+       
+    }).then(function() {
+       console.log()
+    });
+
+});
+
+//Increas or Decrease Stock Buttons
+
+$('.btn-num-product-down').on('click', function(){
+       
+		var newSt = $(this).siblings('input').val()
+		var newStock = parseInt(newSt -1)
+		var curName = $(this).parent().data('name')
+		console.log(newStock, curName)
+        var numProduct = Number($(this).next().val());
+        if(numProduct > 1) $(this).next().val(numProduct - 1);
+
+		var cartData = {
+			name: curName,
+			stock: function(newStock) {
+				if(newStock <=0) {
+					return newStock += 1
+				}
+			}
+		}
+    });
+
+
+    $('.btn-num-product-up').on('click', function(){
+      
+		var newStock = $(this).siblings('input').val()
+		var newStInt = parseInt(newStock) + 1;
+		var curName = $(this).parent().data('name')
+		console.log(newStInt, curName)
+        var numProduct = Number($(this).prev().val());
+        $(this).prev().val(numProduct + 1);
+
+		var cartData = {
+			name: curName,
+			stock: newStInt
+		}
+    });
+
+
+</script>

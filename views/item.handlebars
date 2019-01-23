@@ -43,9 +43,10 @@
 					{{product_desc}}
 				</p>
 
-				<!--  -->
+				
 				<div class="p-t-33 p-b-60">
-					<div class="flex-m flex-w p-b-10">
+					<!-- Size & Color Options -->
+					{{!-- <div class="flex-m flex-w p-b-10">
 						<div class="s-text15 w-size15 t-center">
 							Size
 						</div>
@@ -75,10 +76,10 @@
 								<option>Blue</option>
 							</select>
 						</div>
-					</div>
+					</div> --}}
 
 					<div class="flex-r-m flex-w p-t-10">
-						<div class="w-size16 flex-m flex-w">
+						<div class="w-size16 flex-m flex-w" data-stock="{{stock_quantity}}" data-name="{{product_name}}" data-price="{{price}}" data-photo="{{photolink}}">
 							<div class="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
 								<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
 									<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
@@ -91,20 +92,21 @@
 								</button>
 							</div>
 
-							<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
+							<div class="btn-addcart-product-detail addCart addDB size9 trans-0-4 m-t-10 m-b-10">
 								<!-- Button -->
 								<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
 									Add to Cart
 								</button>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 
-				<div class="p-b-45">
+				{{!-- <div class="p-b-45">
 					<span class="s-text8 m-r-35">SKU: MUG-01</span>
 					<span class="s-text8">Categories: Mug, Design</span>
-				</div>
+				</div> --}}
 
 				<!--  -->
 				<div class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
@@ -168,38 +170,38 @@
 			<div class="wrap-slick2">
 				<div class="slick2">
  {{#each others}}
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								<img src="images/{{photolink}}" alt="IMG-PRODUCT">
+					<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+							<!-- Block2 -->
+							<div class="block2">
+								<div class="block2-img wrap-pic-w of-hidden pos-relative ">
+									<a href="/{{product_name}}"><img style="height: 12rem" src="/images/{{photolink}}" alt="IMG-PRODUCT"></a>
 
-								<div class="block2-overlay trans-0-4">
-									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-										<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-										<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
+									<div class="block2-overlay trans-0-4" data-stock="{{stock_quantity}}" data-name="{{product_name}}" data-price="{{price}}" data-photo="{{photolink}}">
+										<div class="addCart addDB cartMess block2-btn-addwishlist hov-pointer trans-0-4">
+											<i class="icon-wishlist icon_cart_alt" aria-hidden="true"></i>
+											<i class="icon-wishlist icon_cart dis-none" aria-hidden="true"></i>
+										</div>
 
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Add to Cart
-										</button>
+										<div class="block2-btn-addcart w-size1 trans-0-4">
+											<!-- Button -->
+											<a href="/{{product_name}}"><button class="flex-c-m size2 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+												Details
+											</button></a>
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="block2-txt p-t-20">
-								<a href="/{{product_name}}" class="block2-name dis-block s-text3 p-b-5">
-									{{product_name}}
-								</a>
+								<div class="block2-txt p-t-20">
+									<a href="/{{product_name}}" class="block2-name dis-block s-text3 p-b-5">
+										{{product_name}}
+									</a>
 
-								<span class="block2-price m-text6 p-r-5">
-									${{price}}
-								</span>
+									<span class="block2-price m-text6 p-r-5">
+										${{price}}
+									</span>
+								</div>
 							</div>
 						</div>
-					</div>
  {{/each}}
 					{{!-- <div class="item-slick2 p-l-15 p-r-15">
 						<!-- Block2 -->
@@ -447,57 +449,14 @@
 
 
 
+<script>
 
-
-
-<!--===============================================================================================-->
-
-    <script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
-	<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
-	<script type="text/javascript">
-		$(".selection-1").select2({
-			minimumResultsForSearch: 20,
-			dropdownParent: $('#dropDownSelect1')
-		});
-
-		$(".selection-2").select2({
-			minimumResultsForSearch: 20,
-			dropdownParent: $('#dropDownSelect2')
-		});
-	</script>
-<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/slick/slick.min.js"></script>
-	<script type="text/javascript" src="js/slick-custom.js"></script>
-<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
-	<script type="text/javascript">
-		$('.block2-btn-addcart').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
-
-		$('.block2-btn-addwishlist').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-			});
-		});
-
-		$('.btn-addcart-product-detail').each(function(){
+	$('.btn-addcart-product-detail').each(function(){
 			var nameProduct = $('.product-detail-name').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to wishlist !", "success");
 			});
 		});
-	</script>
+	
+</script>
 
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>

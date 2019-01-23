@@ -1,4 +1,15 @@
-DROP DATABASE IF EXISTS store;
+/*
+
+To run this file, we do the following in our Terminal:
+
+1. Go to the directory of this sql file.
+
+2. Get into our mysql console.
+
+3. Run "source schema.sql"
+
+*/
+
 CREATE DATABASE store;
 USE store; 
         CREATE TABLE merchant3 (
@@ -13,6 +24,17 @@ USE store;
         photolink VARCHAR(200),
         storeid INT NULL
       );
+
+
+        CREATE TABLE cart (
+        id INT NOT NULL AUTO_INCREMENT,
+        product_name VARCHAR(45) NULL,
+        price DECIMAL(10, 2) NULL,
+        stock_quantity INT NULL,
+        PRIMARY KEY (id),
+        photolink VARCHAR(200)
+      );
+
 
 USE store;
 INSERT INTO merchant3 (merchant_Id, product_name, department_name, price, stock_quantity,product_desc,photolink,storeid)
@@ -36,3 +58,5 @@ VALUES (3,"halo", "Video Games", 59.99, 150, "Definitive Edition", "dvd.jpg",2),
   (2,"Spyro", "Video Game", 25.50, 100, "Remastered 90s game", "dragon.jpg", 2),
   (2,"Monopoly", "Board Games", 20.00, 35, "The Original Board Game", "boardgame.jpg", 2),
   (2,"PS4 Controller", "Accessories", 59.99, 20, "Controller for your PS4 console", "gta.jpg", 2);
+
+
