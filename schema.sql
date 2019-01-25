@@ -39,7 +39,7 @@ USE store;
 USE store;
 INSERT INTO merchant3 (merchant_Id, product_name, department_name, price, stock_quantity,product_desc,photolink,storeid)
 VALUES 
-(3,"Tomb Raider", "Video Games", 59.99, 150, "Definitive Edition", "tombraid.jpeg",2),
+(3,"Tomb Raider", "Video Games", 59.99, 150, "Definitive Edition", "tombraider.jpeg",2),
 (3, "Monitor", "Electronics", 149.99, 15,"LG Monitor","monitor.jpg",2),
 (3, "Shoes","Shoes", 79, 30,"Nike Shoes","shoes.JPG",2),
 (3, "Computer Table","Furniture", 300,12,"Ikea Table","table.jpg",2),
