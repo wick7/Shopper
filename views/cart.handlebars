@@ -171,17 +171,11 @@ function updateStock(newCart) {
 };
 
 
-$("#checkout").on('click', function() {
-	console.log('fired')
-    $.ajax({
-		 url: "/purchase/checkout",
-        method: "GET"
-       
-    }).then(function() {
-       console.log()
-    });
 
-});
+var button = document.getElementById('checkout');
+button.onclick = function() {
+location.assign('/purchase/checkout');
+}
 
 //Increas or Decrease Stock Buttons
 

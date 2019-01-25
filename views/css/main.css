@@ -642,7 +642,9 @@ iframe {
 }
 
 .logo img {
-  max-height: 27px;
+    width: 300px;
+    height: 150px;
+    margin-top: 122px;
 }
 
 

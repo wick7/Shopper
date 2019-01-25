@@ -8,7 +8,7 @@ var fs = require("fs");
 
 
 // var PORT = 3030;
-const port = process.env.PORT || 8020
+const port = process.env.PORT || 8080
 
 
 //app.use(express.static('public')); // this wont work
@@ -34,7 +34,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "clarks77",
+    password: "Root@2019@",
     database: "store"
 
 });
@@ -297,16 +297,18 @@ app.put("/delete/cartStock", function(req, res) {
 
 app.get("/purchase/checkout", function (req, res) {
    
-    // connection.query("UPDATE cart SET stock_quantity= (?) WHERE product_name=(?)", [req.body.stock, req.body.name], function (err, data1) {
+    //  connection.query("UPDATE cart SET stock_quantity= (?) WHERE product_name=(?)", [req.body.stock, req.body.name], function (err, data1) {
         
-    //         if (err) {
-    //             console.log(err);
+    //          if (err) {
+    //              console.log(err);
     //             return res.status(500).end();
     //         }
             
-    // });
+    //  });
 
-    res.render("checkout");
+    res.render("checkout"); 
+
+
 });
 
 Handlebars.registerHelper('grouped_each', function(every, context, options) {
