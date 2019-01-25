@@ -8,7 +8,7 @@ var fs = require("fs");
 
 
 // var PORT = 3030;
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8020
 
 
 //app.use(express.static('public')); // this wont work
@@ -34,7 +34,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "Root@2019@",
+    password: "password",
     database: "store"
 
 });
