@@ -20,53 +20,32 @@
                     <thead>
                         <tr>
                             <th>Product</th>
-                            <th>#</th>
+                            <th>Quantity</th>
+                            <th></th>
                             <th class="text-center">Price</th>
-                            <th class="text-center">Total</th>
                         </tr>
                     </thead>
                     <tbody>
+                      {{#each cart}}
                         <tr>
-                            <td class="col-md-9"><em>Baked Rodopa Sheep Feta</em></h4></td>
-                            <td class="col-md-1" style="text-align: center"> 2 </td>
-                            <td class="col-md-1 text-center">$13</td>
-                            <td class="col-md-1 text-center">$26</td>
+                            <td class="col-md-9"><em></em>{{product_name}}</h4></td>
+                             <td class="col-md-9"><em></em>{{{stock_quantity}}}</h4></td>
+                             <td class="col-md-9"><em></em></h4></td>
+                            <td class="col-md-1" style="text-align: center">{{price}}</td>
                         </tr>
-                        <tr>
-                            <td class="col-md-9"><em>Lebanese Cabbage Salad</em></h4></td>
-                            <td class="col-md-1" style="text-align: center"> 1 </td>
-                            <td class="col-md-1 text-center">$8</td>
-                            <td class="col-md-1 text-center">$8</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-9"><em>Baked Tart with Thyme and Garlic</em></h4></td>
-                            <td class="col-md-1" style="text-align: center"> 3 </td>
-                            <td class="col-md-1 text-center">$16</td>
-                            <td class="col-md-1 text-center">$48</td>
-                        </tr>
+                       {{/each}} 
+                        
                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td class="text-right">
-                            <p>
-                                <strong>Subtotal: </strong>
-                            </p>
-                            <p>
-                                <strong>Tax: </strong>
-                            </p></td>
                             <td class="text-center">
-                            <p>
-                                <strong>$6.94</strong>
-                            </p>
-                            <p>
-                                <strong>$6.94</strong>
-                            </p></td>
                         </tr>
                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td class="text-right"><h4><strong>Total: </strong></h4></td>
-                            <td class="text-center text-danger"><h4><strong>$31.53</strong></h4></td>
+                            <td class="text-center text-danger"><h4><span class="totalCart"></span></h4></td>
                         </tr>
                     </tbody>
                 </table>
@@ -89,4 +68,19 @@ document.getElementById("time").innerHTML = d;
 <script>
     document.getElementById("randomNumber").innerHTML =
     Math.floor(Math.random() * 10000000) + 1;
+</script>
+
+<script>
+	$(document).ready(function() {
+    	
+    $.ajax({
+        method: "GET",
+        url: "/cartData"
+    }).then(function(response) {
+   
+		$('.totalCart').append("$" + response.totals[0].total)
+
+    });
+	
+});
 </script>

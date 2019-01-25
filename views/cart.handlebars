@@ -133,7 +133,7 @@
 
 				<div class="size15 trans-0-4">
 					<!-- Button -->
-				<button id="checkout" type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+				<button id="checkoutPage" type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
 						Proceed to Checkout
 					</button>
 				</div>
@@ -172,9 +172,9 @@ function updateStock(newCart) {
 
 
 
-var button = document.getElementById('checkout');
+var button = document.getElementById('checkoutPage');
 button.onclick = function() {
-location.assign('/purchase/checkout');
+location.assign('/purchase/checkout/reciept');
 }
 
 //Increas or Decrease Stock Buttons

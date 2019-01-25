@@ -8,7 +8,7 @@ var fs = require("fs");
 
 
 // var PORT = 3030;
-const port = process.env.PORT || 8090
+const port = process.env.PORT || 8020
 
 
 //app.use(express.static('public')); // this wont work
@@ -34,7 +34,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "Root@2019@",
+    password: "lambo127",
     database: "store"
 
 });
@@ -83,65 +83,65 @@ app.get("/", function (req, res) {
     });
 });
 
-});
+// });
 
-app.get("/cartData", function (req, res) {
-    // console.log("something")
-    // res.send("hi")
-    connection.query("SELECT * FROM cart;", function (err, data) {
+// app.get("/cartData", function (req, res) {
+//     // console.log("something")
+//     // res.send("hi")
+//     connection.query("SELECT * FROM cart;", function (err, data) {
         
-        if (err) {
-            console.log(err);
-            return res.status(500).end();
-        }
+//         if (err) {
+//             console.log(err);
+//             return res.status(500).end();
+//         }
 
       
-        var total = 0;
-        var totalStock = 0;
-        var final = [];
-        var indTotal = []; 
+//         var total = 0;
+//         var totalStock = 0;
+//         var final = [];
+//         var indTotal = []; 
      
 
-        for(var i of data) {
-            total += i.stock_quantity * i.price // price total of all items
-            totalStock += i.stock_quantity // stock total of all items
-            indTotal.push(i.stock_quantity * i.price)
-        }
+//         for(var i of data) {
+//             total += i.stock_quantity * i.price // price total of all items
+//             totalStock += i.stock_quantity // stock total of all items
+//             indTotal.push(i.stock_quantity * i.price)
+//         }
 
-        // data2.push({total: total})
-        final.push({total: total, stockT: totalStock, itemT: indTotal})
+//         // data2.push({total: total})
+//         final.push({total: total, stockT: totalStock, itemT: indTotal})
         
 
-        res.json({
-            cart: data,
-            totals: final
-        });
-    });
+//         var reciept = {
+//             cart: data,
+//             totals: final
+//         };
+//     });
 
-});
+// });
 
-app.get("/:searched", function (req, res) {
+// app.get("/:searched", function (req, res) {
 
-  connection.query("SELECT * FROM merchant3 WHERE product_name = ?", [req.params.searched], function (err, data1) {
-    connection.query("SELECT * FROM merchant3;", 
-    function (err, data2) {
-      if (err) {
-          console.log(err);
-          return res.status(500).end();
-      }
+//   connection.query("SELECT * FROM merchant3 WHERE product_name = ?", [req.params.searched], function (err, data1) {
+//     connection.query("SELECT * FROM merchant3;", 
+//     function (err, data2) {
+//       if (err) {
+//           console.log(err);
+//           return res.status(500).end();
+//       }
 
       
-      console.log("this one " + req.params.searched)
+//       console.log("this one " + req.params.searched)
 
    
-      res.render("item", {
-          items: data1,
-          others: data2
-      });
-  });
-});
+//       res.render("item", {
+//           items: data1,
+//           others: data2
+//       });
+//   });
+// });
 
-});
+// });
 
 
 
@@ -175,6 +175,13 @@ app.get("/purchase/cart", function (req, res) {
         });
     });
 });
+
+// app.post("/purchase/checkout", function(req, res){
+
+
+
+// });
+
 
 app.get("/purchase/products", function (req, res) {
     connection.query("SELECT * FROM merchant3;", 
@@ -295,24 +302,30 @@ app.put("/delete/cartStock", function(req, res) {
     });
 });
 
-app.get("/purchase/checkout", function (req, res) {
-   
-    //  connection.query("UPDATE cart SET stock_quantity= (?) WHERE product_name=(?)", [req.body.stock, req.body.name], function (err, data1) {
+// app.get("/purchase/checkout", function (req, res) {
+//    console.log("rout reached")
+//     // connection.query("UPDATE cart SET stock_quantity= (?) WHERE product_name=(?)", [req.body.stock, req.body.name], function (err, data1) {
         
-    //          if (err) {
-    //              console.log(err);
-    //             return res.status(500).end();
-    //         }
+//     //         if (err) {
+//     //             console.log(err);
+//     //             return res.status(500).end();
+//     //         }
             
-    //  });
+//     // });
+//     connection.query("SELECT * FROM cart", function(err, data) {
 
-    
+//         if (err) {
+//                         console.log(err);
+//                         return res.status(500).end();
+//                     }
 
-    res.render("checkout/reciept"); 
+//         console.log(data)
+//         // res.send(data)
+//         res.render("checkout1", reciept);
+//     });
 
 
 });
-
 
 app.get("/purchase/checkout/reciept", function(req, res) {
 
@@ -345,7 +358,7 @@ app.get("/purchase/checkout/reciept", function(req, res) {
                     totals: final
                 };
 
-                res.render("checkout", reciept)
+                res.render("checkout1", reciept)
                 console.log(reciept)
             });
 
@@ -370,6 +383,15 @@ app.post("/purchase/checkout", function(req, res){
 
 });
 
+
+
+
+// app.get("/checkout", function (req, res) {
+// console.log("inside/ checkout")
+
+//     res.render("checkout1")
+
+// });
 
 Handlebars.registerHelper('grouped_each', function(every, context, options) {
     var out = "", subcontext = [], i;
